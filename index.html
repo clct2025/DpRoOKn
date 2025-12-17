@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased bg-[#0a0a0a] text-gray-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Display System</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        gray: {
+                            850: '#1f1f1f',
+                            900: '#171717',
+                            950: '#0a0a0a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-screen w-full overflow-hidden relative">
+    
+    <!-- Main Application Container -->
+    <div id="app" class="h-full w-full flex flex-col relative transition-colors duration-500">
+        <!-- View content injected here -->
+    </div>
+
+    <!-- Toggle Switch (Floating) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="view-toggle" class="group flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 text-white px-4 py-2.5 rounded-full shadow-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95">
+            <i data-lucide="settings-2" class="w-4 h-4 transition-transform group-hover:rotate-90"></i>
+            <span id="toggle-text" class="text-xs font-medium tracking-wide uppercase">Control</span>
+        </button>
+    </div>
+
+    <!-- Logic -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
