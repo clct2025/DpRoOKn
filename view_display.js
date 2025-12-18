@@ -3,7 +3,7 @@ import { store } from './state.js';
 export class DisplayView {
     constructor() {
         this.element = document.createElement('div');
-        this.element.className = "w-full h-full flex flex-col bg-black fade-enter-active";
+        this.element.className = "w-full h-full flex flex-col bg-[#0a0a0a] fade-enter-active";
         this.intervalId = null;
         this.currentIndex = 0;
     }
@@ -55,11 +55,11 @@ export class DisplayView {
     renderSection(type, content, extraClasses = "") {
         const section = document.createElement('div');
 
-        section.className = `flex-1 relative border-b border-white/5 last:border-0 overflow-hidden bg-[#050505] ${extraClasses}`;
+        section.className = `flex-1 relative overflow-hidden bg-[#0a0a0a] ${extraClasses}`;
         
         if (type === 'static') {
             const container = document.createElement('div');
-            container.className = "img-fit-container p-8";
+            container.className = "img-fit-container";
             if (content) {
                 const img = document.createElement('img');
                 img.src = content;
@@ -72,12 +72,12 @@ export class DisplayView {
         } 
         else if (type === 'carousel') {
             const container = document.createElement('div');
-            container.className = "img-fit-container middle-section bg-[#080808] relative"; // Slightly lighter bg for middle
+            container.className = "img-fit-container middle-section relative";
             
             if (content && content.length > 0) {
                 content.forEach((src, idx) => {
                     const slide = document.createElement('div');
-                    slide.className = `carousel-slide ${idx === 0 ? 'active' : ''} p-8`;
+                    slide.className = `carousel-slide ${idx === 0 ? 'active' : ''}`;
                     
                     const img = document.createElement('img');
                     img.src = src;
