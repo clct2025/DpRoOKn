@@ -1,56 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" class="antialiased bg-[#0a0a0a] text-gray-100">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Display System</title>
+    <title>Institute of Future Arts | Admissions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        gray: {
-                            850: '#1f1f1f',
-                            900: '#171717',
-                            950: '#0a0a0a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
-    <!-- Lucide Icons -->
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+    <!-- Marked for Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="h-screen w-full overflow-hidden relative">
-    
-    <!-- Main Application Container -->
-    <div id="app" class="h-full w-full flex flex-col relative transition-colors duration-500">
-        <!-- View content injected here -->
-    </div>
+<body class="bg-stone-50 text-stone-900 antialiased selection:bg-stone-200 selection:text-black">
 
-    <!-- Toggle Switch (Floating) -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="view-toggle" class="group flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 text-white px-4 py-2.5 rounded-full shadow-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95">
-            <i data-lucide="settings-2" class="w-4 h-4 transition-transform group-hover:rotate-90"></i>
-            <span id="toggle-text" class="text-xs font-medium tracking-wide uppercase">Control</span>
-        </button>
-    </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 mix-blend-difference text-white px-6 py-6 flex justify-between items-center pointer-events-none">
+        <div class="text-sm font-medium tracking-widest uppercase pointer-events-auto cursor-pointer">IFA / 2025</div>
+        <div class="pointer-events-auto">
+            <button class="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-xs hover:bg-white/20 transition-colors">Apply Now</button>
+        </div>
+    </nav>
 
-    <!-- Logic -->
-    <script type="module" src="main.js"></script>
+    <!-- Hero Section with Fullscreen Background Image -->
+    <header class="relative w-full h-screen overflow-hidden">
+        <!-- 滿版背景圖片（請換成你自己的圖片網址） -->
+        <div 
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style="background-image: url('https://images.pexels.com/photos/3748704/pexels-photo-3748704.jpeg?auto=compress&cs=tinysrgb&w=2600');">
+        </div>
+        
+        <!-- 漸層遮罩 -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-stone-50"></div>
+
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center p-6">
+            <h1 class="text-5xl md:text-7xl font-light tracking-tighter text-white mb-6 hero-text-reveal">
+                Define Your Future.
+            </h1>
+            <p class="text-white/80 text-lg md:text-xl max-w-xl font-light hero-text-reveal">
+                Admissions for the Academic Year 2025-2026 are now open.
+            </p>
+            
+            <div class="absolute bottom-12 flex flex-col items-center gap-2 text-white/50 animate-bounce">
+                <span class="text-xs uppercase tracking-widest">Scroll</span>
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-24">
+        
+        <!-- Intro Section -->
+        <section class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div>
+                <h2 class="text-3xl font-light tracking-tight mb-4">Essential Documents</h2>
+                <p class="text-stone-500 font-light leading-relaxed">
+                    To ensure a seamless application process, please download and complete the required documentation below. All seven forms must be submitted digitally via our portal.
+                </p>
+            </div>
+            <div class="flex gap-4">
+                <div class="h-px bg-stone-200 flex-1 mt-4"></div>
+            </div>
+        </section>
+
+        <!-- Documents Grid -->
+        <section id="documents-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
+            <!-- Cards injected by JS -->
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section class="relative bg-white border border-stone-100 rounded-2xl p-8 md:p-12 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-stone-50 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+            
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <h3 class="text-sm font-medium uppercase tracking-widest text-stone-400">Admissions Assistant</h3>
+                </div>
+                
+                <div id="chat-history" class="min-h-[100px] max-h-[300px] overflow-y-auto mb-6 space-y-4 text-sm text-stone-600">
+                    <div class="p-4 bg-stone-50 rounded-lg rounded-tl-none max-w-[80%]">
+                        Hello. I can answer questions about tuition, deadlines, or campus life.
+                    </div>
+                </div>
+
+                <form id="ai-form" class="flex gap-2">
+                    <input type="text" id="user-input" placeholder="Ask a question..." 
+                           class="flex-1 bg-transparent border-b border-stone-200 py-3 px-2 focus:outline-none focus:border-stone-900 transition-colors text-sm">
+                    <button type="submit" class="p-3 hover:bg-stone-50 rounded-full transition-colors">
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-stone-900"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-stone-100 py-12 text-center text-stone-400 text-xs">
+        <p>© 2025 Institute of Future Arts. Designed with precision.</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
