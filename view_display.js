@@ -21,7 +21,7 @@ export class DisplayView {
     startCarousel() {
         this.stopCarousel();
         const state = store.getState();
-        const images = state.images.middle;
+        const images = state.images.gallery;
         const interval = state.config.slideshowInterval;
 
         if (images && images.length > 1) {
@@ -42,12 +42,9 @@ export class DisplayView {
         const slides = this.element.querySelectorAll('.middle-section .carousel-slide');
         if (slides.length === 0) return;
 
-
         slides[this.currentIndex].classList.remove('active');
 
-
         this.currentIndex = (this.currentIndex + 1) % images.length;
-
 
         slides[this.currentIndex].classList.add('active');
     }
@@ -98,13 +95,6 @@ export class DisplayView {
         this.element.innerHTML = '';
         const state = store.getState();
 
-
-        this.element.appendChild(this.renderSection('static', state.images.top));
-
-
-        this.element.appendChild(this.renderSection('carousel', state.images.middle));
-
-
-        this.element.appendChild(this.renderSection('static', state.images.bottom));
+        this.element.appendChild(this.renderSection('carousel', state.images.gallery));
     }
 }

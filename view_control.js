@@ -11,7 +11,6 @@ export class ControlView {
         this.element.innerHTML = ''; // Clear
         const state = store.getState();
 
-
         const header = document.createElement('div');
         header.innerHTML = `
             <h1 class="text-3xl font-semibold text-white mb-2 tracking-tight">Control Panel</h1>
@@ -19,22 +18,11 @@ export class ControlView {
         `;
         this.element.appendChild(header);
 
-
-        this.createSectionConfig('Top Section', 'Single Image', state.images.top, (files) => {
-            const file = files[0];
-            const url = URL.createObjectURL(file);
-            store.setImage('top', url);
-            this.render(); // Re-render to show preview
-        });
-
-
-        this.createSectionConfig('Middle Section', 'Slideshow Gallery', state.images.middle, (files) => {
+        this.createSectionConfig('Gallery', 'Slideshow Images', state.images.gallery, (files) => {
             const newUrls = Array.from(files).map(f => URL.createObjectURL(f));
-
-            store.setImage('middle', newUrls); 
+            store.setImage('gallery', newUrls); 
             this.render();
         }, true);
-
 
         const intervalContainer = document.createElement('div');
         intervalContainer.className = "glass-panel p-5 rounded-2xl flex flex-col gap-4";
@@ -56,16 +44,6 @@ export class ControlView {
             intervalContainer.querySelector('span.text-emerald-400').textContent = `${e.target.value / 1000}s`;
         });
         this.element.appendChild(intervalContainer);
-
-
-
-        this.createSectionConfig('Bottom Section', 'Single Image', state.images.bottom, (files) => {
-            const file = files[0];
-            const url = URL.createObjectURL(file);
-            store.setImage('bottom', url);
-            this.render();
-        });
-
 
         if(window.lucide) lucide.createIcons();
 

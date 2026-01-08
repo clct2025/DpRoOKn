@@ -8,11 +8,7 @@ const initialState = {
     config: {
         slideshowInterval: 2000, // ms
     },
-    images: {
-        top: null,
-        middle: [], // Array of blobs/urls
-        bottom: null
-    }
+    images: { gallery: [] }
 };
 
 class Store {
